@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui = "http://java.sun.com/jsf/facelets"
+      xmlns:h = "http://java.sun.com/jsf/html"
+      xmlns:f = "http://java.sun.com/jsf/core"
+      xmlns:p = "http://primefaces.org/ui">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <h:outputStylesheet library="css" name="file.css"/> 
+        <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces" />
+        <title>Bluequest Process</title>
+    </h:head>
+
+    <h:body>
+        <!--p:graphicImage library="imagens" name="logobqr.png" width="200px"/-->
+        <h:form id="main">
+            <p:growl/>
+
+            <p:layout>
+                <p:layoutUnit position="west" header="Main Menu" resizable="false" size="200">
+                    <p:menu style="width: 95%">
+                        <p:submenu label="Contracts - Invoices">
+                            <p:menuitem value="Contract Performance"/>
+                            <p:menuitem value="New Customer's Contract"/>
+                            <p:menuitem value="New Purchase's Contract" url="purchase.xhtml"/>
+                            <p:menuitem value="Upload Invoices"/>
+                        </p:submenu>
+                        <p:submenu label="Sales">
+                            <p:menuitem value="Nov Consignment"/>
+                            <p:menuitem value="Import Process"/>
+                            <p:menuitem value="Delivery Schedule"/>
+                            <p:menuitem value="Annual Plan"/>
+                        </p:submenu>
+                        <p:submenu label="Traffic">
+                            <p:menuitem value="Shipping List"/>
+                            <p:menuitem value="Double-Check Cards"/>
+                        </p:submenu>
+                        <p:submenu label="Hedge">
+                            <p:menuitem value="LME"/>
+                            <p:menuitem value="Dolar"/>
+                        </p:submenu>
+                    </p:menu>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="center" resizable="true" style="height: 100%; width: 100%">
+                    <ui:insert name="page"/>
+                </p:layoutUnit>
+            </p:layout>
+        </h:form>
+        <h:form>
+            <p:confirmDialog message="Do you really want to delete this item?" widgetVar="confirm" severity="alert" closable="false">
+                <p:commandButton value="Yes" icon="ui-icon-check" action="#{purchaseBean.Delete()}" oncomplete="PF('confirm').hide()" update="main"/>
+                <p:commandButton value="No" icon="ui-icon-close" oncomplete="PF('confirm').hide()"/>    
+            </p:confirmDialog>
+        </h:form>
+    </h:body>
+</html>

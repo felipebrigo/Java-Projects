@@ -1,0 +1,33 @@
+@charset "utf-8";
+
+body{
+    font-size: 12px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    margin: 20px;
+}
+
+h1{
+    font-size: 24px;
+    font-weight: 400;
+    color: #3b4d64 !important;
+}
+
+.purchase {
+    background-color: red !important;
+}
+.sales {
+    background-color: green !important;
+}
+
+.ui-treetable table {
+    table-layout: fixed
+}
+
+.value {
+    font-weight: bold
+}
+
+.ui-dialog table {
+    margin-left:auto; 
+    margin-right:auto;
+}

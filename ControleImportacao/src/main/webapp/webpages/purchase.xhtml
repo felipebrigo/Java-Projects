@@ -1,0 +1,75 @@
+<ui:composition template="/WEB-INF/template/genericlayout.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui = "http://java.sun.com/jsf/facelets"
+                xmlns:h = "http://java.sun.com/jsf/html"
+                xmlns:f = "http://java.sun.com/jsf/core"
+                xmlns:p = "http://primefaces.org/ui">
+
+    <ui:define name="page">
+
+        <h:form>
+            <p:growl/>
+            <p:panel header="Purchase Contracts" id="form1">
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="Purchase Contract: "/>
+                    <p:inputText value="#{purchaseBean.pc.purchasectr}"/>
+                    <h:outputLabel value="Expiry Date Ref: "/>
+                    <p:inputText value="#{purchaseBean.pc.expirydate}"/>
+                    <h:outputLabel value="Producer Name: "/>
+                    <p:selectOneMenu value="#{purchaseBean.pc.producer}" >
+                        <f:selectItem itemLabel=":: Supplier ::" itemValue=""/>
+                        <f:selectItems value="#{purchaseBean.suppliers}" var="supplier"
+                                       itemLabel="#{supplier.suppliers}" itemValue="#{supplier.supplier}"/>
+                    </p:selectOneMenu>
+                    <h:outputLabel value="Brand (Producer): "/>
+                    <p:inputText value="#{purchaseBean.pc.producer}"/>
+                    <h:outputLabel value="Product: "/>
+                    <p:inputText value="#{purchaseBean.pc.productobject}"/>
+                    <h:outputLabel value="Contract Volume: "/>
+                    <p:inputText value="#{purchaseBean.pc.ctrvolume}"/>
+                    <h:outputLabel value="Volume per month: "/>
+                    <p:inputText value="#{purchaseBean.pc.monthlyvolume}"/>
+                    <br/><br/>
+                </h:panelGrid>
+                <p:commandButton value="Save" icon="ui-icon-disk" action="#{purchaseBean.SaveBean()}" update="contractlst, form1, main"/>
+            </p:panel>
+
+            <p:panel header="Purchase Contract - Datasheet" id="contractlst" style="resize: both" >
+                
+                <p:commandLink >
+                    <p:graphicImage name="imagens/excelformat.png" width="24"/>
+                    <p:dataExporter type="xlsx" target="puctr" fileName="Purchase"/>
+                </p:commandLink>
+
+                <p:commandLink style="margin-left: 5px;" ajax="false">
+                    <p:graphicImage name="imagens/pdfformat.png" width="24"/>
+                    <p:dataExporter type="pdf" target="puctr" fileName="Purchase"/>
+                </p:commandLink>
+
+                <p:dataTable id="puctr" value="#{purchaseBean.contracts}" var="ctr" paginator="true" rows="10" 
+                             paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+                             paginatorPosition="top" sortBy="#{ctr.purchasectr}">
+
+                    <p:column headerText="Purchase Contract" sortBy="#{ctr.purchasectr}" sortable="true" 
+                              filterBy="#{ctr.purchasectr}" filterable="true">
+                        <h:outputText value="#{ctr.purchasectr}"/>
+                    </p:column>
+                    <p:column headerText="Supplier Name" sortBy="#{ctr.supplier.label}" sortable="true" 
+                              filterBy="#{ctr.supplier.label}" filterable="true">
+                        <h:outputText value="#{ctr.supplier.label}"/>
+                    </p:column>
+                    <p:column headerText="Product">
+                        <h:outputText value="#{ctr.productobject}"/>
+                    </p:column>
+                    <p:column headerText="Volume">
+                        <h:outputText value="#{ctr.ctrvolume}"/>
+                    </p:column>
+                    <p:column headerText="Action" style="text-align: center" exportable="false">
+                        <p:commandButton icon="ui-icon-pencil" value="Edit" action="#{purchaseBean.Edit(ctr)}" style="color:blue; font-size: 11px" update="main"/>
+                        <p:commandButton icon="ui-icon-closethick" value="Delete" action="#{purchaseBean.DeletePrepared(ctr)}" oncomplete="PF('confirm').show()" style="color: red; font-size: 11px; margin-left: 3px"/>
+                    </p:column>    
+                </p:dataTable>
+            </p:panel>
+        </h:form>
+    </ui:define>
+</ui:composition>

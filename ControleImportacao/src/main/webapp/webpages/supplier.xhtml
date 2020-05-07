@@ -1,0 +1,46 @@
+<ui:composition template="/WEB-INF/template/genericlayout.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui = "http://java.sun.com/jsf/facelets"
+                xmlns:h = "http://java.sun.com/jsf/html"
+                xmlns:f = "http://java.sun.com/jsf/core"
+                xmlns:p = "http://primefaces.org/ui">
+
+    <ui:define name="page">
+
+        <h:form>
+            <p:growl/>
+            
+            <p:panel header="Supplier" id="form1">
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="Name of Supplier: "/>
+                    <p:inputText value="#{supplierBean.newsupplier.supplier}"/>
+                    <br/><br/>
+                </h:panelGrid>
+                <p:commandButton value="Save" icon="ui-icon-disk" action="#{supplierBean.saveBean()}" update="contractlst, form1, main"/>
+            </p:panel>
+
+            <p:panel header="Purchase Contract - Datasheet" id="contractlst" style="resize: both" >
+                
+                <p:commandLink >
+                    <p:graphicImage name="imagens/excelformat.png" width="24"/>
+                    <p:dataExporter type="xlsx" target="suppli" fileName="Purchase"/>
+                </p:commandLink>
+
+                <p:commandLink style="margin-left: 5px;" ajax="false">
+                    <p:graphicImage name="imagens/pdfformat.png" width="24"/>
+                    <p:dataExporter type="pdf" target="suppli" fileName="Purchase"/>
+                </p:commandLink>
+
+                <p:dataTable id="suppli" value="#{supplierBean.suppliers}" var="spl" paginator="true" rows="10" 
+                             paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+                             paginatorPosition="top" sortBy="#{spl.supplier}">
+
+                    <p:column headerText="Name of Supplier" sortBy="#{spl.supplier}" sortable="true" 
+                              filterBy="#{spl.supplier}" filterable="true">
+                        <h:outputText value="#{spl.supplier}"/>
+                    </p:column>    
+                </p:dataTable>
+            </p:panel>
+        </h:form>
+    </ui:define>
+</ui:composition>

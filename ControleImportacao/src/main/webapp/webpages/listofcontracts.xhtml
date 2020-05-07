@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui = "http://java.sun.com/jsf/facelets"
+      xmlns:h = "http://java.sun.com/jsf/html"
+      xmlns:f = "http://java.sun.com/jsf/core"
+      xmlns:p = "http://primefaces.org/ui">
+
+    <h:head>
+        <title>Import Process - Purchase Contracts</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:outputStylesheet library="css" name="file.css"/>
+            <p:graphicImage library="imagens" name="logobqr.png" width="200" />
+            <p:growl/>
+            <p:panel header="Purchase Contract - Datasheet">
+                <p:dataTable value="#{purchaseBean.contracts}" var="ctr">
+                    <p:column headerText="Purchase Contract">
+                        <h:outputText value="#{ctr.purchasectr}"/>
+                    </p:column>
+                    <p:column headerText="Supplier Name">
+                        <h:outputText value="#{ctr.supplier.label}"/>
+                    </p:column>
+                    <p:column headerText="Product">
+                        <h:outputText value="#{ctr.productobject}"/>
+                    </p:column>
+                    <p:column headerText="Volume">
+                        <h:outputText value="#{ctr.ctrvolume}"/>
+                    </p:column>
+                    <p:column headerText="Action" style="text-align: center">
+                        <p:commandLink value="Edit"  action="#{purchaseBean.Edit(ctr)}" style="color:blue"/>
+                        <p:commandLink value="Delete" actionListener="#{purchaseBean.DeletePrepared(ctr)}" oncomplete="PF('confirm').show()" style="color:red; margin-left: 20px" update="@form"/>
+                    </p:column>    
+                </p:dataTable>
+                <p:confirmDialog message="Do you really want to delete this item?" widgetVar="confirm">
+                    <p:commandButton value="Yes" icon="ui-icon-check" action="#{purchaseBean.Delete()}" oncomplete="PF('confirm').hide()" update="@form"/>
+                    <p:commandButton value="No" icon="ui-icon-close" oncomplete="PF('confirm').hide()"/>    
+                </p:confirmDialog>
+                <p:button value="Novo Curso" outcome="purchase"/>  
+            </p:panel>
+        </h:form>
+    </h:body>
+</html>

@@ -1,0 +1,39 @@
+<ui:composition template="/WEB-INF/template/genericlayout.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui = "http://java.sun.com/jsf/facelets"
+                xmlns:h = "http://java.sun.com/jsf/html"
+                xmlns:f = "http://java.sun.com/jsf/core"
+                xmlns:p = "http://primefaces.org/ui">
+
+    <ui:define name="page">
+
+        <h:form>
+            <p:growl/>
+            <h:form id="form">
+                <p:treeTable value="#{nfListBean.root}" var="document">
+                    <f:facet name="header">
+                        Document Viewer
+                    </f:facet>
+                    <p:column headerText="Document Number">
+                        <h:outputText value="#{document.size}" />
+                    </p:column>
+                    <p:column headerText="Supplier/Customer">
+                        <h:outputText value="#{document.size}" />
+                    </p:column>
+                    <p:column headerText="Product">
+                        <h:outputText value="#{document.type}" />
+                    </p:column>
+                    <p:column headerText="Volume">
+                        <h:outputText value="#{document.type}" />
+                    </p:column>
+                    <p:column headerText="Gen Info">
+                        <h:outputText value="#{document.type}" />
+                    </p:column>
+                    <p:column headerText="Check">
+                        <h:outputText value="#{document.type}" />
+                    </p:column>
+                </p:treeTable>
+            </h:form>
+        </h:form>
+    </ui:define>
+</ui:composition>

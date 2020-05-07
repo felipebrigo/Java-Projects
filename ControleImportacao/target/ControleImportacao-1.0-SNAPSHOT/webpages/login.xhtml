@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui = "http://java.sun.com/jsf/facelets"
+      xmlns:h = "http://java.sun.com/jsf/html"
+      xmlns:f = "http://java.sun.com/jsf/core"
+      xmlns:p = "http://primefaces.org/ui">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <h:outputStylesheet library="css" name="file.css"/>        
+        <title>Import Process - Login</title>
+    </h:head>
+    <h:body>
+        <p:growl/>
+        <p:graphicImage library="imagens" name="logobqr.png" width="200px"/>
+        <h:form id="form">
+            <h:outputStylesheet library="css" name="file.css"/> 
+            <h:panelGrid columns="2">
+                <p:outputLabel value="Username" for="senha" />
+                <p:inputText value="#{loginBean.username}" required="true" requiredMessage="Username must be informed" />
+                <p:outputLabel value="Password" for="senha"/>
+                <p:password id="senha" feedback="true" weakLabel="Too Weak!" goodLabel="Password OK" 
+                            strongLabel="Too Strong!" inline="true" promptLabel="Please inform a Password"
+                            placeholder="Type here your password" required="true" 
+                            requiredMessage="Password must be informed" match="password"
+                            validatorMessage="Password are different! Please Re-type your password"/>
+                <p:outputLabel value="Confirm your Password" for="password"/>
+                <p:password id="password" required="true" placeholder="Type here your password"/>
+            </h:panelGrid>
+            <br/>
+            <p:commandButton value="Accept" icon="ui-icon-disk"/>
+        </h:form>
+    </h:body>
+</html>
