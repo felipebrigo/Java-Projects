@@ -1,2 +1,2 @@
-# Java projects II
+# Java projects
  Repository for Java Projects
