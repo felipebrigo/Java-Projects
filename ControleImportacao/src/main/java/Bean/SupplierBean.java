@@ -16,7 +16,7 @@ import javax.faces.context.FacesContext;
 @SessionScoped
 public class SupplierBean {
 
-    //Variables Declared 
+    //Variables Declared - testing Git and Github
     private Supplier newsupplier;
     private List<Supplier> suppliers = new ArrayList<>();
 
