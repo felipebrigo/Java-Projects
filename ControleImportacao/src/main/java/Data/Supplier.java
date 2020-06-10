@@ -15,7 +15,7 @@ public class Supplier implements Serializable {
     public String supplier;
     //@ManyToMany
     //public PurchaseContract purchasectr;
- 
+ /*
     CBA("CBA"),
     Alcoa("Alcoa"),
     South32 ("South32"),
@@ -24,7 +24,7 @@ public class Supplier implements Serializable {
     Latasa("Latasa"),
     Pressmetal("Pressmetal"),
     RTA ("RTA");
-
+*/
  
     public Supplier() {
     }
