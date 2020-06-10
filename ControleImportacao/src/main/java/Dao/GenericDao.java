@@ -8,30 +8,29 @@ import javax.persistence.Query;
 
 public class GenericDao<T extends Supplier> implements Serializable {
 
-    private static EntityManager em = JPAUtil.getEntityManager();
+    private static final EntityManager em = JPAUtil.getEntityManager();
 
+    //CRUD Methods
+    
+    //Search for ID
     public T buscarPorId(Class<T> clazz, Integer id) {
         return em.find(clazz, id);
     }
-
+    //Save Method
     public void salvar(T t) {
         try {
             em.getTransaction().begin();
-
-            if (t.getIndex() == null) {
-                em.persist(t);
-            } else {
-                em.merge(t);
-            }
+            em.merge(t);
             em.getTransaction().commit();
-
+            
         } catch (Exception e) {
             em.getTransaction().rollback();
-
         }
-        em.close();
+        
+    em.close();
     }
 
+    //Delete method searching item by ID
     public void remove(Class<T> clazz, Integer id) {
         T t = buscarPorId(clazz, id);
         try {
@@ -45,6 +44,7 @@ public class GenericDao<T extends Supplier> implements Serializable {
         }
     }
 
+    //Search all items and show them in a list
     public List<T> buscarTodos(String findall) {
         Query query = em.createQuery(findall);
         return query.getResultList();
