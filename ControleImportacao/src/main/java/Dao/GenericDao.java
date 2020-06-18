@@ -8,7 +8,7 @@ import javax.persistence.Query;
 
 public class GenericDao<T extends Supplier> implements Serializable {
 
-    private static final EntityManager em = JPAUtil.getEntityManager();
+    public static final EntityManager em = JPAUtil.getEntityManager();
 
     //CRUD Methods
     
@@ -42,6 +42,7 @@ public class GenericDao<T extends Supplier> implements Serializable {
             em.getTransaction().rollback();
 
         }
+    em.close();
     }
 
     //Search all items and show them in a list

@@ -16,7 +16,7 @@ import javax.faces.context.FacesContext;
 @SessionScoped
 public class SupplierBean {
 
-    //Variables Declared - testing Git and Github
+    //Variables Declared
     private Supplier newsupplier;
     private List<Supplier> suppliers = new ArrayList<>();
 
@@ -24,11 +24,10 @@ public class SupplierBean {
 
     public SupplierBean() {
     }
-    
+
     public SupplierBean(Supplier newsupplier) {
         this.newsupplier = newsupplier;
     }
-
     
     public List<Supplier> getSuppliers() {
         return suppliers;
@@ -47,13 +46,13 @@ public class SupplierBean {
     }
     
     //Save method
-    public List<Supplier> SaveBean() {
+    public void SaveBean() {
         
         new GenericDao().salvar(newsupplier);
         newsupplier = new Supplier();
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Successfully Saved!"));
-        suppliers = new GenericDao().buscarTodos("from Supplier");
-        return suppliers;
+        //suppliers = new GenericDao().buscarTodos("from Supplier");
+        //return suppliers;
     }
 
     /*Edit method test on github

@@ -12,7 +12,7 @@ public class Supplier implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     public Integer index;
-    public String supplier;
+    public String suppliername;
     //@ManyToMany
     //public PurchaseContract purchasectr;
  /*
@@ -29,11 +29,10 @@ public class Supplier implements Serializable {
     public Supplier() {
     }
 
-    public Supplier(Integer index, String supplier) {
+    public Supplier(Integer index, String suppliername) {
         this.index = index;
-        this.supplier = supplier;
+        this.suppliername = suppliername;
     }
-
     
     public Integer getIndex() {
         return index;
@@ -43,12 +42,12 @@ public class Supplier implements Serializable {
         this.index = index;
     }
 
-    public String getSupplier() {
-        return supplier;
+    public String getSuppliername() {
+        return suppliername;
     }
 
-    public void setSupplier(String supplier) {
-        this.supplier = supplier;
+    public void setSuppliername(String suppliername) {
+        this.suppliername = suppliername;
     }
-    
+
 }

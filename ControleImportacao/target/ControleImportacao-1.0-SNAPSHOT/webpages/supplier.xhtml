@@ -9,35 +9,24 @@
 
         <h:form>
             <p:growl/>
-            
+
             <p:panel header="Supplier" id="form1">
                 <h:panelGrid columns="2">
                     <h:outputLabel value="Name of Supplier: "/>
-                    <p:inputText value="#{supplierBean.newsupplier.supplier}"/>
+                    <p:inputText value="#{supplierBean.newsupplier}"/>
                     <br/><br/>
                 </h:panelGrid>
-                <p:commandButton value="Save" icon="ui-icon-disk" action="#{supplierBean.saveBean()}" update="contractlst, form1, main"/>
+                <p:commandButton value="Save" icon="ui-icon-disk" action="#{supplierBean.saveBean()}" update="supplierlst, form1, main"/>
             </p:panel>
 
-            <p:panel header="Purchase Contract - Datasheet" id="contractlst" style="resize: both" >
-                
-                <p:commandLink >
-                    <p:graphicImage name="imagens/excelformat.png" width="24"/>
-                    <p:dataExporter type="xlsx" target="suppli" fileName="Purchase"/>
-                </p:commandLink>
-
-                <p:commandLink style="margin-left: 5px;" ajax="false">
-                    <p:graphicImage name="imagens/pdfformat.png" width="24"/>
-                    <p:dataExporter type="pdf" target="suppli" fileName="Purchase"/>
-                </p:commandLink>
+            <p:panel header="Purchase Contract - Datasheet" id="supplierlst" style="resize: both" >
 
                 <p:dataTable id="suppli" value="#{supplierBean.suppliers}" var="spl" paginator="true" rows="10" 
                              paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
-                             paginatorPosition="top" sortBy="#{spl.supplier}">
-
-                    <p:column headerText="Name of Supplier" sortBy="#{spl.supplier}" sortable="true" 
-                              filterBy="#{spl.supplier}" filterable="true">
-                        <h:outputText value="#{spl.supplier}"/>
+                             paginatorPosition="top">
+                    <p:column headerText="Name of Supplier" sortBy="#{spl.suppliername}" sortable="true" 
+                              filterBy="#{spl.suppliername}" filterable="true">
+                        <h:outputText value="#{spl.suppliername}"/>
                     </p:column>    
                 </p:dataTable>
             </p:panel>
