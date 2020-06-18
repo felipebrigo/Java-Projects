@@ -8,7 +8,7 @@ import javax.persistence.Query;
 
 public class GenericDao<T extends Supplier> implements Serializable {
 
-    public static final EntityManager em = JPAUtil.getEntityManager();
+    EntityManager em = JPAUtil.getEntityManager();
 
     //CRUD Methods
     

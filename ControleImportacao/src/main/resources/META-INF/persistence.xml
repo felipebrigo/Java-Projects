@@ -6,6 +6,7 @@
     <class>Data.PurchaseContract</class>
     <class>Data.SalesContract</class>
     <class>Data.ScheduleData</class>
+    <class>Data.Supplier</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/PurchaseDatabase"/>
