@@ -21,20 +21,13 @@ public class SupplierBean {
     private List<Supplier> suppliers = new ArrayList<>();
 
     //Getters-Setters and Constructors
-
     public SupplierBean() {
+        suppliers = new GenericDao().buscarTodos("from Supplier");
+        newsupplier = new Supplier();
     }
 
     public SupplierBean(Supplier newsupplier) {
         this.newsupplier = newsupplier;
-    }
-    
-    public List<Supplier> getSuppliers() {
-        return suppliers;
-    }
-
-    public void setSuppliers(List<Supplier> suppliers) {
-        this.suppliers = suppliers;
     }
 
     public Supplier getNewsupplier() {
@@ -44,10 +37,18 @@ public class SupplierBean {
     public void setNewsupplier(Supplier newsupplier) {
         this.newsupplier = newsupplier;
     }
-    
+
+    public List<Supplier> getSuppliers() {
+        return suppliers;
+    }
+
+    public void setSuppliers(List<Supplier> suppliers) {
+        this.suppliers = suppliers;
+    }
+
     //Save method
     public List<Supplier> SaveBean() {
-        
+
         new GenericDao().salvar(newsupplier);
         newsupplier = new Supplier();
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Successfully Saved!"));
@@ -72,5 +73,4 @@ public class SupplierBean {
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Successfully Deleted!"));
         contracts = new PurchaseDao().Contracts();
     }*/
-
 }
