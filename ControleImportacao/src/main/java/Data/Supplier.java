@@ -11,8 +11,8 @@ public class Supplier implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    public Integer index;
-    public String suppliername;
+    private Integer index;
+    private String suppliername;
     //@ManyToMany
     //public PurchaseContract purchasectr;
  /*

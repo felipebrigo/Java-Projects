@@ -47,13 +47,13 @@ public class SupplierBean {
     }
 
     //Save method
-    public List<Supplier> SaveBean() {
+    public void SaveBean() {
 
         new GenericDao().salvar(newsupplier);
         newsupplier = new Supplier();
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Successfully Saved!"));
-        suppliers = new GenericDao().buscarTodos("from Supplier");
-        return suppliers;
+        //suppliers = new GenericDao().buscarTodos("from Supplier");
+        //return suppliers;
     }
 
     /*Edit method test on github
