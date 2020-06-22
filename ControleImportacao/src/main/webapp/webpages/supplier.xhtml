@@ -10,26 +10,16 @@
         <h:form>
             <p:growl/>
 
-            <p:panel header="Supplier" id="form1">
+            <p:panel header="Supplier" id="supplierform">
                 <h:panelGrid columns="2">
                     <h:outputLabel value="Name of Supplier: "/>
                     <p:inputText value="#{supplierBean.newsupplier.suppliername}"/>
                     <br/><br/>
-                    <p:commandButton value="Save" icon="ui-icon-disk" action="#{supplierBean.saveBean()}" update="supplierlst, form1, main"/>
                 </h:panelGrid>
+                <p:commandButton value="Save" icon="ui-icon-disk" action="#{supplierBean.saveBean()}" update="supplierform, main"/>
+
             </p:panel>
 
-            <p:panel header="Purchase Contract - Datasheet" id="supplierlst" style="resize: both" >
-
-                <p:dataTable id="suppli" value="#{supplierBean.suppliers}" var="spl" paginator="true" rows="10" 
-                             paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
-                             paginatorPosition="top">
-                    <p:column headerText="Name of Supplier" sortBy="#{spl.suppliername}" sortable="true" 
-                              filterBy="#{spl.suppliername}" filterable="true">
-                        <h:outputText value="#{spl.suppliername}"/>
-                    </p:column>    
-                </p:dataTable>
-            </p:panel>
         </h:form>
     </ui:define>
 </ui:composition>

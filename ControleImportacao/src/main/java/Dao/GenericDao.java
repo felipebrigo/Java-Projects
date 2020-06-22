@@ -6,6 +6,17 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
+public class GenericDao{
+    
+    public void Salvar (Supplier supplier){
+        EntityManager em = JPAUtil.getEntityManager();
+        em.getTransaction().begin();    
+        em.merge(supplier);
+        em.getTransaction().commit();
+        em.close();
+    }
+}
+/*
 public class GenericDao<T extends Supplier> implements Serializable {
 
     private static final EntityManager em = JPAUtil.getEntityManager();
@@ -17,7 +28,7 @@ public class GenericDao<T extends Supplier> implements Serializable {
         return em.find(clazz, id);
     }
     //Save Method
-    public void salvar(T t) {
+    public void Salvar(T t) {
         try {
             em.getTransaction().begin();
             em.merge(t);
@@ -123,5 +134,5 @@ Save persistence method - Connection to Database
         em.merge(pc);
         em.getTransaction().commit();
         em.close();
-    }*/
-}
+    }
+}*/

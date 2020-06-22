@@ -18,8 +18,8 @@
                     <h:outputLabel value="Producer Name: "/>
                     <p:selectOneMenu value="#{purchaseBean.pc.producer}" >
                         <f:selectItem itemLabel=":: Supplier ::" itemValue=""/>
-                        <f:selectItems value="#{purchaseBean.suppliers}" var="supplier"
-                                       itemLabel="#{supplier.suppliers}" itemValue="#{supplier.supplier}"/>
+                        <f:selectItems value="#{purchaseBean.pc.producer}" var="supplier"
+                                       itemLabel="#{supplier.producer}" itemValue="#{supplier.producer}"/>
                     </p:selectOneMenu>
                     <h:outputLabel value="Brand (Producer): "/>
                     <p:inputText value="#{purchaseBean.pc.producer}"/>
@@ -54,9 +54,9 @@
                               filterBy="#{ctr.purchasectr}" filterable="true">
                         <h:outputText value="#{ctr.purchasectr}"/>
                     </p:column>
-                    <p:column headerText="Supplier Name" sortBy="#{ctr.supplier.label}" sortable="true" 
-                              filterBy="#{ctr.supplier.label}" filterable="true">
-                        <h:outputText value="#{ctr.supplier.label}"/>
+                    <p:column headerText="Supplier Name" sortBy="#{ctr.producer}" sortable="true" 
+                              filterBy="#{ctr.producer}" filterable="true">
+                        <h:outputText value="#{ctr.producer}"/>
                     </p:column>
                     <p:column headerText="Product">
                         <h:outputText value="#{ctr.productobject}"/>

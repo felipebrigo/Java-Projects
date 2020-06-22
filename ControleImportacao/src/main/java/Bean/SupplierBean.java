@@ -2,9 +2,8 @@ package Bean;
 
 //Import List
 import Dao.GenericDao;
-import Dao.PurchaseDao;
-import Data.PurchaseContract;
 import Data.Supplier;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.application.FacesMessage;
@@ -14,20 +13,16 @@ import javax.faces.context.FacesContext;
 
 @ManagedBean
 @SessionScoped
-public class SupplierBean {
+public class SupplierBean implements Serializable{
 
     //Variables Declared
     private Supplier newsupplier;
-    private List<Supplier> suppliers = new ArrayList<>();
+    //private List<Supplier> suppliers = new ArrayList<>();
 
     //Getters-Setters and Constructors
     public SupplierBean() {
-        suppliers = new GenericDao().buscarTodos("from Supplier");
+        //suppliers = new GenericDao().buscarTodos("from Supplier");
         newsupplier = new Supplier();
-    }
-
-    public SupplierBean(Supplier newsupplier) {
-        this.newsupplier = newsupplier;
     }
 
     public Supplier getNewsupplier() {
@@ -38,6 +33,7 @@ public class SupplierBean {
         this.newsupplier = newsupplier;
     }
 
+    /*
     public List<Supplier> getSuppliers() {
         return suppliers;
     }
@@ -45,11 +41,11 @@ public class SupplierBean {
     public void setSuppliers(List<Supplier> suppliers) {
         this.suppliers = suppliers;
     }
-
+     */
     //Save method
     public void SaveBean() {
-
-        new GenericDao().salvar(newsupplier);
+        
+        new GenericDao().Salvar(newsupplier);
         newsupplier = new Supplier();
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Successfully Saved!"));
         //suppliers = new GenericDao().buscarTodos("from Supplier");

@@ -13,25 +13,18 @@ public class Supplier implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer index;
     private String suppliername;
-    //@ManyToMany
-    //public PurchaseContract purchasectr;
- /*
-    CBA("CBA"),
-    Alcoa("Alcoa"),
-    South32 ("South32"),
-    Maaden ("Maaden"),
-    Novelis ("Novelis"),
-    Latasa("Latasa"),
-    Pressmetal("Pressmetal"),
-    RTA ("RTA");
-*/
- 
+
     public Supplier() {
     }
 
     public Supplier(Integer index, String suppliername) {
         this.index = index;
         this.suppliername = suppliername;
+    }
+
+    @Override
+    public String toString() {
+        return "Supplier{" + "index=" + index + ", suppliername=" + suppliername + '}';
     }
     
     public Integer getIndex() {
