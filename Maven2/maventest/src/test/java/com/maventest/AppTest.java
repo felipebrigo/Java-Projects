@@ -1,5 +1,6 @@
 package com.maventest;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
@@ -13,8 +14,14 @@ public class AppTest
      * Rigorous Test :-)
      */
     @Test
-    public void shouldAnswerWithTrue()
-    {
+    public void shouldAnswerWithTrue() {
         assertTrue( true );
+    }
+
+    @Test
+    public void testSoma() {
+        int num1=1;
+        int num2=1;
+        assertEquals(2, num1+num2);
     }
 }
